@@ -1,6 +1,8 @@
-def main():
-    print("Hello from lorica-api!")
+from fastapi import FastAPI
+
+app = FastAPI(title="Lorica API")
 
 
-if __name__ == "__main__":
-    main()
+@app.get("/")
+async def hello():
+    return {"message": "Hello, World!"}
