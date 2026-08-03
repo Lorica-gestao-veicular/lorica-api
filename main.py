@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
-app = FastAPI(title="Lorica API")
+app = FastAPI(title="Lorica API", docs_url="/", redoc_url=None)
 
+if __name__ == "__main__":
+    import uvicorn
 
-@app.get("/")
-async def hello():
-    return {"message": "Hello, World!"}
+    uvicorn.run(app, port=5000)
