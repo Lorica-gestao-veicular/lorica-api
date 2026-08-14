@@ -1,0 +1,17 @@
+from sqlalchemy import Enum as SQLEnum
+from sqlalchemy import String
+from sqlalchemy.orm import Mapped, mapped_column
+
+from app.features.users.roles import UserRoles
+
+
+class UserModel:
+    __tablename__ = "users"
+
+    id_: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(255), nullable=False)
+    email: Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
+    password: Mapped[str] = mapped_column(String(255), nullable=False)
+    role: Mapped[UserRoles] = mapped_column(
+        SQLEnum(UserRoles, name="user_role"), default=UserRoles.USER, nullable=False
+    )
