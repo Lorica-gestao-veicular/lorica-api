@@ -38,5 +38,5 @@ async def login_for_token(
     if not user_dict:
         raise HTTPException(status_code=400, detail="Incorrect username or password")
 
-    access_token = create_access_token(data={"sub": user_dict.email})
+    access_token = create_access_token(data={"sub": str(user_dict.id)})
     return Token(access_token=access_token, token_type="bearer")
