@@ -20,8 +20,3 @@ class JWTSettings(BaseSettings):
     access_token_expire_minutes: float = 30
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
-
-
-db_settings = DBSettings()
-admin_settings = AdminSettings()
-jwt_settings = JWTSettings()
